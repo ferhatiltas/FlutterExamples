@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       appBar: AppBar(
         title: Text("Flutter Örnekleri"),
       ),
-        body: ResimveButonTurleri()
+        body: RowColumnOdev()
     ),
     );
   }
