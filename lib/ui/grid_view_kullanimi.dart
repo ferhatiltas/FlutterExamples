@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
+import 'package:ornek_image_text/ui/custom_scroll_silvers.dart';
 
 class GridViewKullanimi extends StatelessWidget {
   @override
@@ -21,7 +22,7 @@ class GridViewKullanimi extends StatelessWidget {
             margin: EdgeInsets.all(15),
             alignment: Alignment.center,
             decoration: BoxDecoration(
-                border: Border.all(color: Colors.blueGrey, width: 8),
+                border: Border.all(color: Colors.red.shade900, width: 8),
                 borderRadius: new BorderRadius.all(new Radius.circular(25)),
                 boxShadow: [
                   new BoxShadow(
@@ -30,10 +31,8 @@ class GridViewKullanimi extends StatelessWidget {
                       offset: new Offset(8, 8),
                       blurRadius: 10)
                 ],
-                gradient: LinearGradient(
-                    colors: [Colors.blue.shade900, Colors.yellow.shade500],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter)),
+                color: Colors.red,
+                ),
             child: Text(
               "$index",
               style: TextStyle(
