@@ -6,11 +6,33 @@ import 'ui/custom_scroll_silvers.dart';
 
 void main() => runApp(
       MaterialApp(
+        initialRoute: "/",
+        // ilk açılan route hangisi olsun ? der
+        onUnknownRoute: (RouteSettings settings) =>
+            MaterialPageRoute(builder: (context) => ASayfasi()),
+        // Bir hata çıktığında bizi ASayfasına gönderecek
+        routes: {
+          // Kendi routlarımızı burada oluşturup daha sonra Navigator metodunun içine routs yazmamıza gerek kalmaz sadece isimi yazarsak yeterli
+          '/': (context) => NavigasyonIslemleri(),
+          // '/' olursa uygulama çalışır çalışmaz ilk başta nereden açılacağına karar verilir ve home: gerek kalmaz
+          '/CPage': (context) => CSayfasi(),
+          '/DPage': (context) => DSayfasi(),
+          '/GPage': (context) => GSayfasi(),
+        },
+
+        onGenerateRoute: (RouteSettings settings) {
+          // Listelerde dinamik tıklanma özelliği eklemek için oluşturulur ama isimlendirilmiş route kullanmalıyız
+          List<String> pathElemanlari = settings.name.split("/");
+          if (pathElemanlari[1] == "detay") {
+            return MaterialPageRoute(
+                builder: (context) => ListeDetay(int.parse(pathElemanlari[2])));
+          }
+        },
         title: "Flutter Examples",
         // color: Colors.blue,
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: NavigasyonIslemleri(),
+        // router '/' kullanıldığı için bunu bir daha kullanamayız.   = home: NavigasyonIslemleri(),
       ),
     );

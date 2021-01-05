@@ -5,14 +5,14 @@ class NavigasyonIslemleri extends StatelessWidget {
   Widget build(BuildContext context) {
     String baslik = "B Sayfası";
     // TODO: implement build
-    return WillPopScope(  // App Barda sol üstte kendiliğinden çıkan geri tuşunu kontrol etmek içindir
+    return WillPopScope(
+      // App Barda sol üstte kendiliğinden çıkan geri tuşunu kontrol etmek içindir
 
-      onWillPop: (){
+      onWillPop: () {
         print("on Will Pop Çalıştı");
-        Navigator.maybePop(context,false);
+        Navigator.maybePop(context, false);
         return Future.value(true); // true ise geri tuşu işlevsiz olacaktır
       },
-
 
       child: Scaffold(
         appBar: AppBar(
@@ -85,10 +85,90 @@ class NavigasyonIslemleri extends StatelessWidget {
                   });
                 },
               ),
+              RaisedButton(
+                elevation: 10,
+                child: Text(
+                  "E Sayfasına Git ve Geri Geleme",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+                color: Colors.blue,
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ESayfasi()));
+                },
+              ),
+              RaisedButton(
+                elevation: 10,
+                child: Text(
+                  "Liste Sayfasına Git",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+                color: Colors.black,
+                onPressed: () {
+                  Navigator.push<bool>(
+                    context,
+                    MaterialPageRoute(builder: (context) => ListeSayfasi()),
+                  );
+                },
+              ),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class ListeSayfasi extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Lİste Sayfası",
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
+      body: ListView.builder(
+        itemBuilder: (BuildContext context, int index) {
+          return GestureDetector(
+            onTap: () {
+            //  Navigator.push(context, MaterialPageRoute(builder: (context) => ListeDetay(index)));
+              Navigator.pushNamed(context, "/detay/$index");
+
+            },
+            child: Center(
+                child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("Liste Elemanı : $index",style: TextStyle(fontSize: 20),),
+            )),
+          );
+        },
+        itemCount: 50,
+      ),
+    );
+  }
+}
+
+class ListeDetay extends StatelessWidget {
+  int tiklanilanIndexDegeri = 0;
+
+  ListeDetay(this.tiklanilanIndexDegeri);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Lİste Detay Sayfası",
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
+      body: Center(
+          child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text("Liste Elemanı : $tiklanilanIndexDegeri ",style: TextStyle(fontSize: 25),),
+      )),
     );
   }
 }
@@ -243,6 +323,106 @@ class DSayfasi extends StatelessWidget {
               child: Text(
                 "Geri Dön ve Veri Gönder",
                 style: TextStyle(fontSize: 25, color: Colors.black),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ESayfasi extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "E Sayfası",
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "E SAYFASI",
+              style: TextStyle(
+                color: Colors.red.shade900,
+                fontSize: 25,
+              ),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => FSayfasi()));
+              },
+              child: Text("F Sayfasına Git"),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class FSayfasi extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "F Sayfası",
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "F SAYFASI",
+              style: TextStyle(
+                color: Colors.red.shade900,
+                fontSize: 25,
+              ),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, "/GPage");
+              },
+              child: Text("G Sayfasına Git"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class GSayfasi extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "G Sayfası",
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "G SAYFASI",
+              style: TextStyle(
+                color: Colors.red.shade900,
+                fontSize: 25,
               ),
             ),
           ],
