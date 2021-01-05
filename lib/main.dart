@@ -15,7 +15,7 @@ void main() => runApp(
           // Kendi routlarımızı burada oluşturup daha sonra Navigator metodunun içine routs yazmamıza gerek kalmaz sadece isimi yazarsak yeterli
           '/': (context) => NavigasyonIslemleri(),
           // '/' olursa uygulama çalışır çalışmaz ilk başta nereden açılacağına karar verilir ve home: gerek kalmaz
-          '/CPage': (context) => CSayfasi(),
+          '/APage': (context) => ASayfasi(),
           '/DPage': (context) => DSayfasi(),
           '/GPage': (context) => GSayfasi(),
         },
