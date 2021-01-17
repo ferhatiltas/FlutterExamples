@@ -1,4 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:ornek_image_text/ui/date_time_picker.dart';
+import 'package:ornek_image_text/ui/diger_form_elemanlari.dart';
+import 'package:ornek_image_text/ui/form_textformfield.dart';
+import 'package:ornek_image_text/ui/my_home_stateful_widget.dart';
+import 'package:ornek_image_text/ui/resim_ve_buton.dart';
+import 'package:ornek_image_text/ui/row_column_odevi.dart';
+import 'package:ornek_image_text/ui/stepper_kullanimi.dart';
+import 'package:ornek_image_text/ui/text_field.dart';
+
+import 'custom_scroll_silvers.dart';
+import 'etkin_liste_ornek.dart';
+import 'grid_view_kullanimi.dart';
+import 'liste_ornekleri.dart';
 
 class NavigasyonIslemleri extends StatelessWidget {
   @override
@@ -17,101 +30,195 @@ class NavigasyonIslemleri extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            "Navigasyon İşlemleri",
+            "Flutter Examples",
             style: TextStyle(color: Colors.white),
           ),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              RaisedButton(
-                elevation: 10,
-                child: Text(
-                  "A Sayfasına Git",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+        body: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                RaisedButton(
+                  elevation: 10,
+                  child: Text(
+                    "Row and Column",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  color: Colors.deepPurple.shade300,
+                  onPressed: () {
+                    Navigator.push<bool>(
+                      context,
+                      MaterialPageRoute(builder: (context) => RowColumnOdev()),
+                    );
+                  },
                 ),
-                color: Colors.green,
-                onPressed: () {
-                  Navigator.push<bool>(
-                    context,
-                    MaterialPageRoute(builder: (context) => ASayfasi()),
-                  );
-                },
-              ),
-              RaisedButton(
-                elevation: 10,
-                child: Text(
-                  "B Sayfasına Git",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                RaisedButton(
+                  elevation: 10,
+                  child: Text(
+                    "Image and Container",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  color: Colors.black,
+                  onPressed: () {
+                    Navigator.push<bool>(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ResimveButonTurleri()),
+                    );
+                  },
                 ),
-                color: Colors.red,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => BSayfasi(baslik)),
-                  );
-                },
-              ),
-              RaisedButton(
-                elevation: 10,
-                child: Text(
-                  "C Sayfasına Git ve Geri Gel",
-                  style: TextStyle(color: Colors.black, fontSize: 20),
+                RaisedButton(
+                  elevation: 10,
+                  child: Text(
+                    "Counter ++ and --",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  color: Colors.pink,
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => MyHome()));
+                  },
                 ),
-                color: Colors.yellow,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => CSayfasi()),
-                  );
-                },
-              ),
-              RaisedButton(
-                elevation: 10,
-                child: Text(
-                  "D Sayfasına Git ve Gelirken Veri Getir",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                RaisedButton(
+                  elevation: 10,
+                  child: Text(
+                    "Sliver AppBar",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  color: Colors.green,
+                  onPressed: () {
+                    Navigator.push<bool>(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CollapsableToolBarOrnek()),
+                    );
+                  },
                 ),
-                color: Colors.deepPurple,
-                onPressed: () {
-                  Navigator.push<bool>(
-                    context,
-                    MaterialPageRoute(builder: (context) => DSayfasi()),
-                  ).then((popOlayindanSonraGelenDeger) {
-                    // push bittikten sonra ne olacağı burada yazılır
-                    print(
-                        "Pop İşleminden Sonra Gelen Değer : $popOlayindanSonraGelenDeger");
-                  });
-                },
-              ),
-              RaisedButton(
-                elevation: 10,
-                child: Text(
-                  "E Sayfasına Git ve Geri Geleme",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                RaisedButton(
+                  elevation: 10,
+                  child: Text(
+                    "Listview",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  color: Colors.deepPurple,
+                  onPressed: () {
+                    Navigator.push<bool>(
+                      context,
+                      MaterialPageRoute(builder: (context) => ListeOrnekleri()),
+                    ).then((popOlayindanSonraGelenDeger) {
+                      // push bittikten sonra ne olacağı burada yazılır
+                      print(
+                          "Pop İşleminden Sonra Gelen Değer : $popOlayindanSonraGelenDeger");
+                    });
+                  },
                 ),
-                color: Colors.blue,
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ESayfasi()));
-                },
-              ),
-              RaisedButton(
-                elevation: 10,
-                child: Text(
-                  "Liste Sayfasına Git",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                RaisedButton(
+                  elevation: 10,
+                  child: Text(
+                    "ListView and Alert Dialog",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  color: Colors.red,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => EtkinListeOrnek()),
+                    );
+                  },
                 ),
-                color: Colors.black,
-                onPressed: () {
-                  Navigator.push<bool>(
-                    context,
-                    MaterialPageRoute(builder: (context) => ListeSayfasi()),
-                  );
-                },
-              ),
-            ],
+                RaisedButton(
+                  elevation: 10,
+                  child: Text(
+                    "GridView",
+                    style: TextStyle(color: Colors.black, fontSize: 20),
+                  ),
+                  color: Colors.yellow,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => GridViewKullanimi()),
+                    );
+                  },
+                ),
+                RaisedButton(
+                  elevation: 10,
+                  child: Text(
+                    "Form İslemlerine Git",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  color: Colors.deepPurple,
+                  onPressed: () {
+                    Navigator.push<bool>(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => TextFieldOzellikleri()),
+                    );
+                  },
+                ),
+                RaisedButton(
+                  elevation: 10,
+                  child: Text(
+                    "TextFormFeild  Git",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  color: Colors.pink,
+                  onPressed: () {
+                    Navigator.push<bool>(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FormveTextFormFeild()),
+                    );
+                  },
+                ),
+                RaisedButton(
+                  elevation: 10,
+                  child: Text(
+                    "Diğer Form İşlemlerine Git",
+                    style: TextStyle(color: Colors.black, fontSize: 20),
+                  ),
+                  color: Colors.yellow,
+                  onPressed: () {
+                    Navigator.push<bool>(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => DigerFormElemanlari()),
+                    );
+                  },
+                ),
+                RaisedButton(
+                  elevation: 10,
+                  child: Text(
+                    "Tarih Saat İşlem Git",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  color: Colors.teal,
+                  onPressed: () {
+                    Navigator.push<bool>(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => TarihSaatOrnegi()),
+                    );
+                  },
+                ),
+                RaisedButton(
+                  elevation: 10,
+                  child: Text(
+                    "Stepper Örneğine Git",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  color: Colors.red.shade900,
+                  onPressed: () {
+                    Navigator.push<bool>(
+                      context,
+                      MaterialPageRoute(builder: (context) => StepperOrnek()),
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -133,14 +240,16 @@ class ListeSayfasi extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
             onTap: () {
-            //  Navigator.push(context, MaterialPageRoute(builder: (context) => ListeDetay(index)));
+              //  Navigator.push(context, MaterialPageRoute(builder: (context) => ListeDetay(index)));
               Navigator.pushNamed(context, "/detay/$index");
-
             },
             child: Center(
                 child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text("Liste Elemanı : $index",style: TextStyle(fontSize: 20),),
+              child: Text(
+                "Liste Elemanı : $index",
+                style: TextStyle(fontSize: 20),
+              ),
             )),
           );
         },
@@ -167,7 +276,10 @@ class ListeDetay extends StatelessWidget {
       body: Center(
           child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Text("Liste Elemanı : $tiklanilanIndexDegeri ",style: TextStyle(fontSize: 25),),
+        child: Text(
+          "Liste Elemanı : $tiklanilanIndexDegeri ",
+          style: TextStyle(fontSize: 25),
+        ),
       )),
     );
   }

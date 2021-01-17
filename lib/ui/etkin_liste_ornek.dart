@@ -53,12 +53,14 @@ class EtkinListeOrnek extends StatelessWidget {
                   FlatButton(
                       onPressed: () {
                         print("object");
+
                       },
                       child: Text("Tamam")),
                   FlatButton(
                     onPressed: () {
                       print("object");
-                      
+                      Navigator.of(ctx).pop();
+
                     },
                     child: Text("Kapat"),
                   ),

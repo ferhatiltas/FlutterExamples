@@ -27,7 +27,7 @@ class GridViewKullanimi extends StatelessWidget {
                 boxShadow: [
                   new BoxShadow(
                       // gölgelik
-                      color: Colors.grey.shade800,
+                      color: Colors.white,
                       offset: new Offset(8, 8),
                       blurRadius: 10)
                 ],
